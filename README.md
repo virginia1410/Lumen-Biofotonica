@@ -1,6 +1,8 @@
 # 🔬 Lumen-Biofotónica
 
 Proyecto interactivo sobre la interacción de la luz y los tejidos biológicos.
+
+
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/9fa9b2ac-bdab-4ea0-9550-3fe26a377385" />
 
 
@@ -15,4 +17,5 @@ Plataforma educativa que permite explorar conceptos de fotobiomodulación y resp
 
 ## 👥 Integrantes
 * Virginia Morales (@virginia1410)
-* 
+*  Diego Ferrer    (Diego-F18)
+*  Lisamnys Cordero 
