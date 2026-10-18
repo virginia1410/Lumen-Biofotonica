@@ -1,15 +1,14 @@
-# Lumen Biophotonics
+# 🔬 Lumen-Biofotónica
 
-Landing page educativa sobre óptica tisular y fotobiomodulación, en modo oscuro (azul oscuro).
-HTML + CSS + JavaScript puros, sin build. Las escenas 3D son CSS puro.
+Proyecto interactivo sobre la interacción de la luz y los tejidos biológicos.
 
-```text
-index.html
-style.css
-script.js
-LICENSE
-```
+## 📌 Descripción
+Plataforma educativa que permite explorar conceptos de fotobiomodulación y respuesta tisular a través de recursos digitales interactivos.
 
-Despliegue: sube la carpeta tal cual (GitHub Pages, Netlify, Vercel).
+## 🛠️ Tecnologías y Estructura
+* **HTML5 / CSS3 / JavaScript**
+* Incluye modas/temas de interfaz (**Light** y **Dark**)
 
-Colores: variables en `:root` de `style.css` (`--bg-main`, `--surface-a`, `--surface-b`, `--card`).
+## 👥 Integrantes
+* Virginia Morales (@virginia1410)
+* 
