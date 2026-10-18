@@ -13,7 +13,7 @@ Plataforma educativa que permite explorar conceptos de fotobiomodulación y resp
 
 ## 🛠️ Tecnologías y Estructura
 * **HTML5 / CSS3 / JavaScript**
-* Incluye modas/temas de interfaz (**Light** y **Dark**)
+* Incluye modas/temas de interfaz 
 
 ## 👥 Integrantes
 * Virginia Morales (@virginia1410)
