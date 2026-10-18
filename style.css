@@ -25,16 +25,21 @@
     --slate-dark:    #7a8fa3;
     --teal:          #4a90a4;
     --white:         #FFFFFF;
+    /* Tema azul oscuro (reemplaza blancos/marfil) */
+    --surface-a:     #11264a;
+    --surface-b:     #0e2040;
+    --card:          #17305a;
+    --text-strong:   #f2f5fa;
 
     /* Texto */
-    --text-dark:     #0e1b2d;
-    --text-mid:      #3a4a5c;
-    --text-light:    #6a7a8c;
+    --text-dark:     #e8eef7;
+    --text-mid:      #b4c1d4;
+    --text-light:    #8fa1ba;
     --text-ivory:    #F5F1E8;
     --text-slate:    #A9B6C7;
 
     /* Superficies */
-    --bg-main:       var(--ivory);
+    --bg-main:       #0c1b36;
     --bg-dark:       var(--navy);
     --card-bg:       var(--white);
     --card-bg-dark:  var(--navy-mid);
@@ -156,8 +161,8 @@ h1, h2, h3, h4, h5 {
 /* Outline — azul marino */
 .btn-outline {
     background: transparent;
-    color: var(--navy);
-    border: 1.5px solid var(--navy);
+    color: var(--text-strong);
+    border: 1.5px solid var(--text-strong);
 }
 .btn-outline:hover {
     background: var(--navy);
@@ -165,7 +170,7 @@ h1, h2, h3, h4, h5 {
     transform: translateY(-2px);
 }
 .btn-outline:focus-visible {
-    outline: 3px solid var(--navy);
+    outline: 3px solid var(--teal);
     outline-offset: 3px;
 }
 
@@ -196,7 +201,7 @@ h1, h2, h3, h4, h5 {
     z-index: 1000;
     padding: 18px 0;
     transition: var(--tr);
-    background: rgba(245, 241, 232, 0.85);
+    background: rgba(12, 27, 54, 0.85);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid transparent;
@@ -206,7 +211,7 @@ h1, h2, h3, h4, h5 {
     padding: 13px 0;
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
-    background: rgba(245, 241, 232, 0.97);
+    background: rgba(12, 27, 54, 0.97);
 }
 
 .nav-container {
@@ -223,13 +228,13 @@ h1, h2, h3, h4, h5 {
     font-family: var(--font-title);
     font-weight: 600;
     font-size: 1rem;
-    color: var(--navy);
+    color: var(--text-strong);
     letter-spacing: 0.02em;
     transition: var(--tr-fast);
 }
 .logo:hover { opacity: 0.8; }
 .logo-mark { color: var(--red); font-size: 1.15rem; }
-.logo-text { color: var(--navy); }
+.logo-text { color: var(--text-strong); }
 .logo-sub  { color: var(--slate-dark); font-weight: 400; font-size: 0.85em; }
 
 /* Links de navegación */
@@ -258,7 +263,7 @@ h1, h2, h3, h4, h5 {
     background: var(--red);
     transition: width 0.22s ease;
 }
-.nav-links a:hover { color: var(--navy); }
+.nav-links a:hover { color: var(--text-strong); }
 .nav-links a:hover::after { width: 100%; }
 .nav-links a:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; border-radius: 2px; }
 
@@ -267,7 +272,7 @@ h1, h2, h3, h4, h5 {
     display: none;
     background: none;
     border: 1.5px solid var(--border);
-    color: var(--navy);
+    color: var(--text-strong);
     font-size: 1.1rem;
     cursor: pointer;
     padding: 8px 10px;
@@ -275,7 +280,7 @@ h1, h2, h3, h4, h5 {
     transition: var(--tr-fast);
     z-index: 1010;
 }
-.hamburger:hover { background: var(--ivory-dark); }
+.hamburger:hover { background: var(--surface-b); }
 .hamburger:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 
 /* ------------------------------------------------------------------
@@ -465,7 +470,7 @@ h1, h2, h3, h4, h5 {
     font-size: clamp(1.9rem, 4vw, 2.8rem);
     font-weight: 700;
     margin-bottom: 16px;
-    color: var(--navy);
+    color: var(--text-strong);
 }
 
 /* H2 en secciones oscuras */
@@ -493,7 +498,7 @@ h1, h2, h3, h4, h5 {
 ------------------------------------------------------------------ */
 .fundamentos {
     padding: var(--section-pad) 0;
-    background: var(--ivory);
+    background: var(--surface-a);
 }
 
 /* Grid de feature-cards (heredado de la plantilla) */
@@ -508,7 +513,7 @@ h1, h2, h3, h4, h5 {
     padding: 32px;
     border-radius: 10px;
     border: 1px solid var(--border);
-    background: var(--white);
+    background: var(--card);
     box-shadow: var(--shadow-xs);
     transition: var(--tr);
     display: flex;
@@ -556,7 +561,7 @@ h1, h2, h3, h4, h5 {
 .feature-card h3 {
     font-size: 1.15rem;
     font-weight: 600;
-    color: var(--navy);
+    color: var(--text-strong);
     margin-bottom: 10px;
 }
 .feature-card > p {
@@ -600,14 +605,14 @@ h1, h2, h3, h4, h5 {
     padding: 20px 24px;
     background: rgba(16, 29, 48, 0.04);
     border: 1px solid var(--border);
-    border-left: 3px solid var(--navy);
+    border-left: 3px solid var(--text-strong);
     border-radius: 8px;
     font-size: 0.9rem;
     color: var(--text-mid);
     line-height: 1.7;
 }
 .info-block-icon {
-    color: var(--navy);
+    color: var(--text-strong);
     font-size: 1rem;
     flex-shrink: 0;
     margin-top: 2px;
@@ -782,7 +787,7 @@ h1, h2, h3, h4, h5 {
 ------------------------------------------------------------------ */
 .explorer-section {
     padding: var(--section-pad) 0;
-    background: var(--ivory-dark);
+    background: var(--surface-b);
 }
 
 /* Aviso educativo */
@@ -806,7 +811,7 @@ h1, h2, h3, h4, h5 {
     flex-shrink: 0;
     margin-top: 2px;
 }
-.explorer-disclaimer strong { color: var(--navy); }
+.explorer-disclaimer strong { color: var(--text-strong); }
 
 /* Layout explorador */
 .explorer-layout {
@@ -818,7 +823,7 @@ h1, h2, h3, h4, h5 {
 
 /* Panel de controles */
 .explorer-controls {
-    background: var(--white);
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 28px 24px;
@@ -838,7 +843,7 @@ h1, h2, h3, h4, h5 {
     font-family: var(--font-body);
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--navy);
+    color: var(--text-strong);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -885,7 +890,7 @@ h1, h2, h3, h4, h5 {
     width: 100%;
     height: 5px;
     border-radius: 3px;
-    background: var(--ivory-dark);
+    background: var(--surface-b);
     outline: none;
     cursor: pointer;
     border: none;
@@ -897,7 +902,7 @@ h1, h2, h3, h4, h5 {
     height: 16px;
     border-radius: 50%;
     background: var(--navy);
-    border: 2.5px solid var(--white);
+    border: 2.5px solid var(--bg-main);
     box-shadow: 0 0 0 1px var(--slate);
     cursor: pointer;
     transition: var(--tr-fast);
@@ -910,7 +915,7 @@ h1, h2, h3, h4, h5 {
     width: 16px; height: 16px;
     border-radius: 50%;
     background: var(--navy);
-    border: 2.5px solid var(--white);
+    border: 2.5px solid var(--bg-main);
     box-shadow: 0 0 0 1px var(--slate);
     cursor: pointer;
 }
@@ -949,11 +954,11 @@ h1, h2, h3, h4, h5 {
     min-width: 80px;
     text-align: center;
 }
-.tissue-btn:hover { border-color: var(--slate); color: var(--navy); background: var(--ivory); }
+.tissue-btn:hover { border-color: var(--slate); color: var(--text-strong); background: var(--surface-a); }
 .tissue-btn.active {
     background: var(--navy);
     color: var(--ivory);
-    border-color: var(--navy);
+    border-color: var(--text-strong);
 }
 .tissue-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
@@ -980,7 +985,7 @@ h1, h2, h3, h4, h5 {
     font-family: var(--font-mono);
     font-size: 0.88rem;
     font-weight: 500;
-    color: var(--navy);
+    color: var(--text-strong);
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -1117,7 +1122,7 @@ h1, h2, h3, h4, h5 {
 ------------------------------------------------------------------ */
 .team-section {
     padding: var(--section-pad) 0;
-    background: var(--ivory);
+    background: var(--surface-a);
 }
 
 .team-grid {
@@ -1127,7 +1132,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .team-card {
-    background: var(--white);
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
     overflow: hidden;
@@ -1175,7 +1180,7 @@ h1, h2, h3, h4, h5 {
 .team-name {
     font-size: 1.05rem;
     font-weight: 600;
-    color: var(--navy);
+    color: var(--text-strong);
 }
 .team-role {
     font-family: var(--font-mono);
@@ -1203,7 +1208,7 @@ h1, h2, h3, h4, h5 {
     padding-top: 12px;
     border-top: 1px solid var(--border);
 }
-.team-academic i { color: var(--navy); font-size: 0.85rem; }
+.team-academic i { color: var(--text-strong); font-size: 0.85rem; }
 
 /* ------------------------------------------------------------------
    13. REFERENCIAS
@@ -1211,7 +1216,7 @@ h1, h2, h3, h4, h5 {
 ------------------------------------------------------------------ */
 .references-section {
     padding: var(--section-pad) 0;
-    background: var(--ivory-dark);
+    background: var(--surface-b);
 }
 
 .references-section .section-header h2 {
@@ -1229,7 +1234,7 @@ h1, h2, h3, h4, h5 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--navy);
+    color: var(--text-strong);
     font-family: var(--font-mono);
     margin-bottom: 20px;
     padding-bottom: 10px;
@@ -1270,7 +1275,7 @@ h1, h2, h3, h4, h5 {
     justify-content: center;
 }
 .ref-authors { color: var(--text-mid); }
-.ref-title   { color: var(--navy); font-weight: 500; font-style: italic; }
+.ref-title   { color: var(--text-strong); font-weight: 500; font-style: italic; }
 .ref-source  { color: var(--text-light); font-size: 0.82rem; }
 .ref-list a  { color: var(--red); border-bottom: 1px solid transparent; transition: var(--tr-fast); }
 .ref-list a:hover { border-bottom-color: var(--red); }
@@ -1284,12 +1289,12 @@ h1, h2, h3, h4, h5 {
     color: var(--text-mid);
 }
 .credits-list a {
-    color: var(--navy);
+    color: var(--text-strong);
     font-weight: 500;
     border-bottom: 1px solid var(--border);
     transition: var(--tr-fast);
 }
-.credits-list a:hover { border-bottom-color: var(--navy); }
+.credits-list a:hover { border-bottom-color: var(--text-strong); }
 
 .ref-note {
     font-size: 0.85rem;
@@ -1394,7 +1399,7 @@ h1, h2, h3, h4, h5 {
         top: 0; right: -100%;
         width: 75%;
         height: 100vh;
-        background: var(--ivory);
+        background: var(--surface-a);
         flex-direction: column;
         justify-content: center;
         gap: 36px;
@@ -1438,4 +1443,49 @@ h1, h2, h3, h4, h5 {
     .dosimetry-grid { grid-template-columns: 1fr; }
     .features-grid { gap: 16px; }
     .team-grid { gap: 16px; }
+}
+
+/* =====================================================================
+   BLOQUES EXPLICATIVOS CON ESCENAS 3D (CSS puro, sin librerías)
+===================================================================== */
+.explain { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 64px); align-items: center; margin-bottom: 56px; }
+.explain.reverse .scene { order: -1; }
+.explain h3 { font-family: var(--font-title); font-size: clamp(1.3rem, 2.4vw, 1.7rem); color: var(--text-strong); margin-bottom: 14px; }
+.explain p { color: var(--text-mid); margin-bottom: 12px; }
+.explain p strong { color: var(--text-strong); }
+.scene { height: 340px; display: grid; place-items: center; perspective: 900px; border: 1px solid var(--border-dark); border-radius: 20px; background: radial-gradient(circle at 50% 40%, rgba(74, 144, 164, 0.18), transparent 70%), var(--surface-b); overflow: hidden; }
+.s3d { position: relative; width: 200px; height: 200px; transform-style: preserve-3d; }
+
+.layers { transform: rotateX(62deg) rotateZ(-30deg); animation: sway 12s ease-in-out infinite alternate; }
+.layer { position: absolute; inset: 0; border-radius: 14px; border: 1px solid rgba(169, 182, 199, 0.45); box-shadow: 0 0 30px rgba(0, 0, 0, 0.35); transform: translateZ(var(--z)); background: linear-gradient(135deg, var(--c1), var(--c2)); }
+.layer span { position: absolute; left: 12px; bottom: 8px; font: 500 0.72rem var(--font-mono); color: var(--text-strong); }
+.ray { position: absolute; left: 50%; top: 50%; width: 5px; height: 190px; transform: translate(-50%, -50%) rotateX(90deg); background: linear-gradient(180deg, var(--red), rgba(185, 67, 74, 0)); border-radius: 4px; box-shadow: 0 0 18px var(--red); }
+@keyframes sway { from { transform: rotateX(62deg) rotateZ(-50deg); } to { transform: rotateX(62deg) rotateZ(-8deg); } }
+
+.orbits { animation: turn 20s linear infinite; }
+.core { position: absolute; inset: 62px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #e07b82, var(--red) 55%, #4a1a20); box-shadow: 0 0 40px rgba(185, 67, 74, 0.55); }
+.ring { --tilt: 75deg; position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(169, 182, 199, 0.5); animation: orbit 9s linear infinite; }
+.ring::after { content: ""; position: absolute; top: -6px; left: calc(50% - 6px); width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 0 14px 3px var(--teal); }
+.ring:nth-child(3) { --tilt: 65deg; inset: -24px; animation-duration: 12s; }
+.ring:nth-child(4) { --tilt: -65deg; inset: -48px; animation-duration: 15s; }
+@keyframes orbit { from { transform: rotateX(var(--tilt)) rotateZ(0); } to { transform: rotateX(var(--tilt)) rotateZ(360deg); } }
+@keyframes turn { to { transform: rotateY(360deg); } }
+
+.cube { animation: tumble 18s linear infinite; width: 150px; height: 150px; }
+.face { position: absolute; inset: 0; border: 1px solid rgba(255, 255, 255, 0.35); opacity: 0.88; }
+.face:nth-child(1) { transform: translateZ(75px); background: linear-gradient(135deg, #7a2cff, #2a4bff); }
+.face:nth-child(2) { transform: rotateY(90deg) translateZ(75px); background: linear-gradient(135deg, #2a4bff, #00c8ff); }
+.face:nth-child(3) { transform: rotateY(180deg) translateZ(75px); background: linear-gradient(135deg, #19e36a, #ffe83a); }
+.face:nth-child(4) { transform: rotateY(-90deg) translateZ(75px); background: linear-gradient(135deg, #ffe83a, #ff7a1f); }
+.face:nth-child(5) { transform: rotateX(90deg) translateZ(75px); background: linear-gradient(135deg, #ff2a1f, #7a1620); }
+.face:nth-child(6) { transform: rotateX(-90deg) translateZ(75px); background: linear-gradient(135deg, #00c8ff, #19e36a); }
+@keyframes tumble { from { transform: rotateX(-20deg) rotateY(0); } to { transform: rotateX(-20deg) rotateY(360deg); } }
+
+@media (max-width: 900px) {
+    .explain { grid-template-columns: 1fr; }
+    .explain.reverse .scene { order: 0; }
+    .scene { height: 280px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .layers, .orbits, .ring, .cube { animation: none; }
 }
