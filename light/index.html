@@ -1,245 +1,827 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowState - Find Your Perfect Workflow</title>
+
+    <!-- SEO -->
+    <title>LUMEN BIOPHOTONICS — Luz, tejido y tecnología biomédica</title>
+    <meta name="description" content="Plataforma educativa dedicada a los principios ópticos de la interacción luz-tejido y los fundamentos de la fotobiomodulación en ingeniería biomédica.">
+
+    <!-- Fuentes: Space Grotesk (títulos) · Inter (texto) · JetBrains Mono (datos técnicos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navigation -->
-    <header class="navbar">
+    <!-- ============================================================
+         NAVEGACIÓN PRINCIPAL
+         #navbar          → barra fija, clase .scrolled añadida por JS
+         #navLinks        → menú, clase .active añadida por JS (móvil)
+         #hamburger       → botón móvil, aria-expanded gestionado por JS
+    ============================================================ -->
+    <header class="navbar" id="navbar" role="banner">
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-wave-square"></i> FlowState
+
+            <!-- Logotipo tipográfico -->
+            <a href="#inicio" class="logo" aria-label="LUMEN BIOPHOTONICS — Ir al inicio">
+                <span class="logo-mark" aria-hidden="true">
+                    <i class="fas fa-circle-dot"></i>
+                </span>
+                <span class="logo-text">LUMEN <span class="logo-sub">BIOPHOTONICS</span></span>
             </a>
-            <nav class="nav-links" id="navLinks">
-                <a href="#features">Features</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#" class="btn btn-primary">Get Started</a>
+
+            <!-- Navegación principal -->
+            <nav class="nav-links" id="navLinks" aria-label="Menú principal">
+                <a href="#inicio">Inicio</a>
+                <a href="#fundamentos">Fundamentos ópticos</a>
+                <a href="#fotobiomodulacion">Fotobiomodulación</a>
+                <a href="#explorador">Explorador</a>
+                <a href="#proyecto">Proyecto</a>
+                <a href="#equipo">Equipo</a>
             </nav>
-            <button class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
+
+            <!-- Botón hamburger (móvil) -->
+            <button
+                class="hamburger"
+                id="hamburger"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="navLinks"
+            >
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
+
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-bg-glow"></div>
+    <main id="main-content">
+
+        <!-- ============================================================
+             A. HERO SECTION
+             #inicio / #hero
+        ============================================================ -->
+        <section class="hero" id="inicio" aria-labelledby="hero-heading">
+            <div class="hero-bg-glow" aria-hidden="true"></div>
+
+            <!-- Visualización SVG: propagación de luz en tejido biológico -->
+            <div class="hero-visual" aria-hidden="true">
+                <svg class="tissue-diagram" viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" role="presentation">
+                    <!-- Fondo tejido -->
+                    <defs>
+                        <radialGradient id="tissueGrad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#1a3a5c" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#101D30" stop-opacity="0.95"/>
+                        </radialGradient>
+                        <radialGradient id="beamGrad" cx="50%" cy="0%" r="100%">
+                            <stop offset="0%" stop-color="#B9434A" stop-opacity="0.9"/>
+                            <stop offset="60%" stop-color="#B9434A" stop-opacity="0.3"/>
+                            <stop offset="100%" stop-color="#B9434A" stop-opacity="0"/>
+                        </radialGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                        <filter id="softglow">
+                            <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+                            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Tejido de fondo -->
+                    <rect x="0" y="140" width="600" height="340" fill="url(#tissueGrad)" rx="4"/>
+
+                    <!-- Capas del tejido -->
+                    <rect x="0" y="140" width="600" height="30" fill="#A9B6C7" opacity="0.15" rx="2"/>
+                    <text x="580" y="162" fill="#A9B6C7" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="end" opacity="0.6">epidermis</text>
+
+                    <rect x="0" y="170" width="600" height="60" fill="#A9B6C7" opacity="0.08"/>
+                    <text x="580" y="205" fill="#A9B6C7" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="end" opacity="0.6">dermis</text>
+
+                    <rect x="0" y="230" width="600" height="250" fill="#101D30" opacity="0.4"/>
+                    <text x="580" y="270" fill="#A9B6C7" font-size="10" font-family="JetBrains Mono, monospace" text-anchor="end" opacity="0.6">subcutáneo</text>
+
+                    <!-- Estructuras celulares abstractas -->
+                    <circle cx="120" cy="220" r="18" fill="none" stroke="#A9B6C7" stroke-width="0.8" opacity="0.25"/>
+                    <circle cx="120" cy="220" r="8" fill="#A9B6C7" opacity="0.1"/>
+                    <circle cx="200" cy="260" r="14" fill="none" stroke="#A9B6C7" stroke-width="0.8" opacity="0.2"/>
+                    <circle cx="200" cy="260" r="5" fill="#A9B6C7" opacity="0.1"/>
+                    <circle cx="380" cy="245" r="20" fill="none" stroke="#A9B6C7" stroke-width="0.8" opacity="0.2"/>
+                    <circle cx="380" cy="245" r="9" fill="#A9B6C7" opacity="0.1"/>
+                    <circle cx="480" cy="230" r="16" fill="none" stroke="#A9B6C7" stroke-width="0.8" opacity="0.25"/>
+                    <circle cx="150" cy="320" r="22" fill="none" stroke="#A9B6C7" stroke-width="0.8" opacity="0.15"/>
+                    <circle cx="340" cy="340" r="18" fill="none" stroke="#A9B6C7" stroke-width="0.8" opacity="0.15"/>
+                    <circle cx="460" cy="360" r="24" fill="none" stroke="#A9B6C7" stroke-width="0.8" opacity="0.12"/>
+
+                    <!-- Haz de luz principal (rojo fotónico) -->
+                    <polygon points="270,0 330,0 380,140 220,140" fill="url(#beamGrad)" opacity="0.7" class="light-beam"/>
+
+                    <!-- Rayos dispersados -->
+                    <line x1="300" y1="140" x2="180" y2="320" stroke="#B9434A" stroke-width="1.2" opacity="0.35" stroke-dasharray="4,3" class="scatter-ray"/>
+                    <line x1="300" y1="140" x2="420" y2="310" stroke="#B9434A" stroke-width="1.2" opacity="0.35" stroke-dasharray="4,3" class="scatter-ray"/>
+                    <line x1="300" y1="140" x2="140" y2="240" stroke="#B9434A" stroke-width="1" opacity="0.25" stroke-dasharray="3,4" class="scatter-ray"/>
+                    <line x1="300" y1="140" x2="460" y2="250" stroke="#B9434A" stroke-width="1" opacity="0.25" stroke-dasharray="3,4" class="scatter-ray"/>
+                    <line x1="300" y1="140" x2="300" y2="430" stroke="#B9434A" stroke-width="1.5" opacity="0.4" class="scatter-ray"/>
+
+                    <!-- Punto de absorción -->
+                    <circle cx="300" cy="280" r="6" fill="#B9434A" opacity="0.8" filter="url(#glow)" class="absorption-dot"/>
+                    <circle cx="300" cy="280" r="14" fill="#B9434A" opacity="0.15" class="absorption-ring"/>
+
+                    <!-- Línea fuente de luz -->
+                    <rect x="260" y="10" width="80" height="8" rx="4" fill="#B9434A" opacity="0.9" filter="url(#glow)"/>
+                    <text x="300" y="35" fill="#B9434A" font-size="9" font-family="JetBrains Mono, monospace" text-anchor="middle" opacity="0.8">λ = 630–850 nm</text>
+
+                    <!-- Etiqueta superficie -->
+                    <line x1="20" y1="140" x2="220" y2="140" stroke="#A9B6C7" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.4"/>
+                    <text x="22" y="136" fill="#A9B6C7" font-size="9" font-family="JetBrains Mono, monospace" opacity="0.5">superficie tisular</text>
+                </svg>
+            </div>
+
             <div class="container hero-content">
-                <div class="badge fade-in">
-                    <i class="fas fa-sparkles"></i> Now with AI Copilot 2.0
+                <!-- Badge académico -->
+                <div class="badge fade-in" role="note">
+                    <i class="fas fa-flask" aria-hidden="true"></i>
+                    Ingeniería Biomédica · Óptica Tisular
                 </div>
-                <h1 class="fade-in">
-                    Find your <br>
-                    <span class="gradient-text">perfect flow.</span>
+
+                <!-- H1 único -->
+                <h1 class="fade-in" id="hero-heading">
+                    Luz, tejido y<br>
+                    <span class="accent-text">tecnología biomédica.</span>
                 </h1>
+
                 <p class="hero-subtitle fade-in">
-                    FlowState is the all-in-one AI workspace that automates your busywork, 
-                    organizes your thoughts, and helps your team ship 10x faster.
+                    Exploramos los principios ópticos que describen la interacción de la luz
+                    con los tejidos biológicos y su relación con la fotobiomodulación.
                 </p>
+
                 <div class="hero-buttons fade-in">
-                    <a href="#" class="btn btn-primary btn-large">
-                        Start for Free <i class="fas fa-arrow-right"></i>
+                    <a href="#fundamentos" class="btn btn-primary btn-large" id="hero-cta-main">
+                        Explorar el proyecto <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="btn btn-secondary btn-large">
-                        <i class="fas fa-play"></i> Watch Demo
+                    <a href="#explorador" class="btn btn-outline btn-large" id="hero-cta-explorer">
+                        <i class="fas fa-sliders" aria-hidden="true"></i> Explorador interactivo
                     </a>
                 </div>
-                <div class="hero-image fade-in">
-                    <div class="dashboard-mockup">
-                        <div class="mockup-header">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="mockup-body">
-                            <div class="mockup-sidebar"></div>
-                            <div class="mockup-main">
-                                <div class="mockup-card"></div>
-                                <div class="mockup-card"></div>
-                                <div class="mockup-card wide"></div>
-                            </div>
-                        </div>
+
+                <!-- Parámetros clave — tipografía técnica -->
+                <div class="hero-params fade-in" aria-label="Parámetros ópticos de referencia">
+                    <div class="param-item">
+                        <span class="param-label">Ventana óptica</span>
+                        <span class="param-value">600–1100 nm</span>
+                    </div>
+                    <div class="param-separator" aria-hidden="true"></div>
+                    <div class="param-item">
+                        <span class="param-label">Coef. dispersión reducido</span>
+                        <span class="param-value">μ′<sub>s</sub> ≈ 1–3 mm⁻¹</span>
+                    </div>
+                    <div class="param-separator" aria-hidden="true"></div>
+                    <div class="param-item">
+                        <span class="param-label">Penetración estimada</span>
+                        <span class="param-value">1–10 mm</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section id="features" class="features">
+        <!-- ============================================================
+             B. FUNDAMENTOS ÓPTICOS
+             #fundamentos
+        ============================================================ -->
+        <section id="fundamentos" class="fundamentos" aria-labelledby="fundamentos-heading">
             <div class="container">
+
                 <div class="section-header fade-in">
-                    <h2>Everything you need to <span class="gradient-text">scale</span></h2>
-                    <p>Powerful features designed to eliminate friction and keep your team in the flow state.</p>
+                    <span class="section-tag">Principios físicos</span>
+                    <h2 id="fundamentos-heading">
+                        Fundamentos <span class="accent-text">ópticos</span>
+                    </h2>
+                    <p>Los tejidos biológicos son medios ópticamente complejos. Su interacción con la luz queda descrita por tres fenómenos fundamentales.</p>
                 </div>
-                <div class="features-grid">
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon" style="--icon-bg: #EEF2FF; --icon-color: #4F46E5;">
-                            <i class="fas fa-brain"></i>
+
+                <div class="features-grid" role="list">
+
+                    <!-- Tarjeta: Absorción -->
+                    <article class="feature-card fade-in" role="listitem" id="card-absorcion">
+                        <div class="feature-icon" style="--icon-color: #B9434A;" aria-hidden="true">
+                            <!-- Diagrama SVG: absorción -->
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <line x1="20" y1="4" x2="20" y2="20" stroke="#B9434A" stroke-width="2.5" stroke-linecap="round"/>
+                                <circle cx="20" cy="25" r="8" fill="#B9434A" opacity="0.2" stroke="#B9434A" stroke-width="1.5"/>
+                                <circle cx="20" cy="25" r="3.5" fill="#B9434A"/>
+                                <!-- Ondas de calor -->
+                                <path d="M12 35 Q14 33 16 35 Q18 37 20 35 Q22 33 24 35 Q26 37 28 35" stroke="#B9434A" stroke-width="1" fill="none" opacity="0.5"/>
+                            </svg>
                         </div>
-                        <h3>AI Copilot</h3>
-                        <p>Let our AI draft emails, summarize meetings, and generate code while you focus on what matters.</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon" style="--icon-bg: #FDF2F8; --icon-color: #EC4899;">
-                            <i class="fas fa-diagram-project"></i>
+                        <div class="feature-tag-line">
+                            <span class="mono-tag">μ<sub>a</sub></span>
+                            <span class="feature-tag-text">Coeficiente de absorción</span>
                         </div>
-                        <h3>Smart Workflows</h3>
-                        <p>Automate repetitive tasks with visual workflows. Connect your favorite tools seamlessly.</p>
-                    </div>
-                    <div class="feature-card fade-in">
-                        <div class="feature-icon" style="--icon-bg: #ECFEFF; --icon-color: #06B6D4;">
-                            <i class="fas fa-shield-halved"></i>
+                        <h3>Absorción</h3>
+                        <p>Interacción mediante la cual los cromóforos del tejido —como la hemoglobina, el agua y la melanina— capturan energía luminosa, convirtiéndola principalmente en calor o en excitación fotoquímica.</p>
+                        <ul class="feature-detail-list" aria-label="Detalles de absorción">
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> Hemoglobina oxigenada (HbO₂): picos en 415 y 542 nm</li>
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> Agua: absorción dominante > 900 nm</li>
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> Melanina: absorción decreciente con la longitud de onda</li>
+                        </ul>
+                    </article>
+
+                    <!-- Tarjeta: Dispersión -->
+                    <article class="feature-card fade-in" role="listitem" id="card-dispersion">
+                        <div class="feature-icon" style="--icon-color: #A9B6C7;" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <line x1="8" y1="20" x2="20" y2="20" stroke="#A9B6C7" stroke-width="2.5" stroke-linecap="round"/>
+                                <circle cx="20" cy="20" r="5" fill="#A9B6C7" opacity="0.2" stroke="#A9B6C7" stroke-width="1.5"/>
+                                <!-- Rayos dispersados -->
+                                <line x1="25" y1="15" x2="35" y2="8" stroke="#A9B6C7" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+                                <line x1="25" y1="20" x2="37" y2="20" stroke="#A9B6C7" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+                                <line x1="25" y1="25" x2="35" y2="32" stroke="#A9B6C7" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+                                <line x1="22" y1="14" x2="28" y2="5" stroke="#A9B6C7" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                                <line x1="22" y1="26" x2="28" y2="35" stroke="#A9B6C7" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                            </svg>
                         </div>
-                        <h3>Enterprise Security</h3>
-                        <p>SOC 2 compliant with end-to-end encryption. Your data is safe, private, and always yours.</p>
-                    </div>
+                        <div class="feature-tag-line">
+                            <span class="mono-tag">μ<sub>s</sub></span>
+                            <span class="feature-tag-text">Coeficiente de dispersión</span>
+                        </div>
+                        <h3>Dispersión</h3>
+                        <p>Cambios en la dirección de propagación de los fotones al interactuar con estructuras subcelulares como membranas, mitocondrias y fibras de colágeno, cuyo tamaño es comparable a la longitud de onda de la luz.</p>
+                        <ul class="feature-detail-list" aria-label="Detalles de dispersión">
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> Dispersión de Mie: estructuras > λ/10</li>
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> Factor de anisotropía g ≈ 0.9 en tejido blando</li>
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> Dispersión reducida: μ′<sub>s</sub> = μ<sub>s</sub>(1 − g)</li>
+                        </ul>
+                    </article>
+
+                    <!-- Tarjeta: Longitud de onda -->
+                    <article class="feature-card fade-in" role="listitem" id="card-lambda">
+                        <div class="feature-icon" style="--icon-color: #4a90a4;" aria-hidden="true">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <!-- Onda sinusoidal -->
+                                <path d="M4 22 Q10 10 16 22 Q22 34 28 22 Q34 10 40 22" stroke="#4a90a4" stroke-width="2" fill="none"/>
+                                <!-- Indicador lambda -->
+                                <text x="14" y="10" fill="#4a90a4" font-size="9" font-family="serif" font-style="italic">λ</text>
+                                <!-- Flechas longitud -->
+                                <line x1="4" y1="36" x2="16" y2="36" stroke="#4a90a4" stroke-width="1" opacity="0.6"/>
+                                <line x1="4" y1="34" x2="4" y2="38" stroke="#4a90a4" stroke-width="1" opacity="0.6"/>
+                                <line x1="16" y1="34" x2="16" y2="38" stroke="#4a90a4" stroke-width="1" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <div class="feature-tag-line">
+                            <span class="mono-tag">λ</span>
+                            <span class="feature-tag-text">Longitud de onda</span>
+                        </div>
+                        <h3>Longitud de onda</h3>
+                        <p>Propiedad fundamental de la radiación electromagnética que determina selectivamente qué cromóforos del tejido absorben la energía. Define la profundidad de penetración y el tejido diana en cada aplicación.</p>
+                        <ul class="feature-detail-list" aria-label="Detalles de longitud de onda">
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> Visible rojo: 620–700 nm</li>
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> NIR cercano: 700–1100 nm</li>
+                            <li><i class="fas fa-circle-dot" aria-hidden="true"></i> Ventana terapéutica: ↓ absorción de H₂O y Hb</li>
+                        </ul>
+                    </article>
+
                 </div>
+
+                <!-- Bloque explicativo adicional -->
+                <div class="info-block fade-in">
+                    <div class="info-block-icon" aria-hidden="true">
+                        <i class="fas fa-circle-info"></i>
+                    </div>
+                    <p>La propagación de la luz en tejido se modela matemáticamente mediante la <strong>ecuación de transporte radiativo (ETR)</strong> y su aproximación de difusión, que relaciona los coeficientes μ<sub>a</sub> y μ<sub>s</sub> con la fluencia de energía en cada punto del tejido.</p>
+                </div>
+
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials">
+        <!-- ============================================================
+             C. FOTOBIOMODULACIÓN
+             #fotobiomodulacion
+        ============================================================ -->
+        <section id="fotobiomodulacion" class="fbm-section" aria-labelledby="fbm-heading">
             <div class="container">
+
                 <div class="section-header fade-in">
-                    <h2>Loved by <span class="gradient-text">innovators</span></h2>
-                    <p>Join thousands of teams who have transformed their workflow with FlowState.</p>
+                    <span class="section-tag">Mecanismo celular</span>
+                    <h2 id="fbm-heading">
+                        Foto<span class="accent-text">biomodulación</span>
+                    </h2>
+                    <p>Un proceso fotoquímico no térmico mediante el cual la radiación electromagnética modifica la actividad metabólica de las células.</p>
                 </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card fade-in">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                <div class="fbm-layout">
+
+                    <!-- Columna editorial izquierda -->
+                    <div class="fbm-text fade-in">
+                        <h3 class="fbm-subtitle">¿Qué es la fotobiomodulación?</h3>
+                        <p>La fotobiomodulación (FBM) —también denominada terapia de luz de baja intensidad (LLLT, por sus siglas en inglés)— es un proceso fotoquímico en el que la radiación electromagnética de longitudes de onda específicas interactúa con fotorreceptores endógenos de la célula, sin producir un aumento de temperatura significativo en el tejido diana.</p>
+
+                        <p>El mecanismo más estudiado implica la absorción de fotones por la <strong>citocromo c oxidasa (CCO)</strong>, subunidad IV de la cadena respiratoria mitocondrial, lo que desencadena una cascada de señalización intracelular.</p>
+
+                        <div class="fbm-disclaimer" role="note" aria-label="Nota sobre estado de la evidencia">
+                            <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
+                            <p>Los mecanismos celulares descritos corresponden a modelos experimentales. Las aplicaciones clínicas específicas requieren validación clínica independiente y no deben interpretarse como indicaciones terapéuticas establecidas.</p>
                         </div>
-                        <p class="quote">"FlowState completely replaced three different tools for us. The AI summarization alone saves our team 10 hours a week. It's an absolute game-changer."</p>
-                        <div class="user-info">
-                            <img src="https://i.pravatar.cc/150?img=11" alt="User" class="avatar">
-                            <div>
-                                <h4>Sarah Jenkins</h4>
-                                <span>VP of Product, TechCorp</span>
+                    </div>
+
+                    <!-- Diagrama de cascada -->
+                    <div class="fbm-diagram fade-in" aria-label="Diagrama de la cascada fotobiomoduladora" role="img">
+                        <div class="cascade-step" id="cascade-1">
+                            <div class="cascade-icon" style="--step-color: #B9434A;" aria-hidden="true">
+                                <i class="fas fa-circle-dot"></i>
+                            </div>
+                            <div class="cascade-content">
+                                <h4>1. Absorción del fotón</h4>
+                                <p>La CCO mitocondrial absorbe fotones en la ventana óptica terapéutica (630–850 nm).</p>
+                                <span class="cascade-param">λ: 630–850 nm</span>
+                            </div>
+                        </div>
+
+                        <div class="cascade-connector" aria-hidden="true"></div>
+
+                        <div class="cascade-step" id="cascade-2">
+                            <div class="cascade-icon" style="--step-color: #A9B6C7;" aria-hidden="true">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="cascade-content">
+                                <h4>2. Cambio redox en CCO</h4>
+                                <p>Se modifica el estado redox de la citocromo c oxidasa, incrementando la síntesis de ATP.</p>
+                                <span class="cascade-param">↑ ATP mitocondrial</span>
+                            </div>
+                        </div>
+
+                        <div class="cascade-connector" aria-hidden="true"></div>
+
+                        <div class="cascade-step" id="cascade-3">
+                            <div class="cascade-icon" style="--step-color: #4a90a4;" aria-hidden="true">
+                                <i class="fas fa-arrow-trend-up"></i>
+                            </div>
+                            <div class="cascade-content">
+                                <h4>3. Señalización secundaria</h4>
+                                <p>Producción de especies reactivas de oxígeno (ROS) en concentraciones fisiológicas que activan factores de transcripción.</p>
+                                <span class="cascade-param">ROS · cAMP · Ca²⁺</span>
+                            </div>
+                        </div>
+
+                        <div class="cascade-connector" aria-hidden="true"></div>
+
+                        <div class="cascade-step" id="cascade-4">
+                            <div class="cascade-icon" style="--step-color: #2d7a4a;" aria-hidden="true">
+                                <i class="fas fa-dna"></i>
+                            </div>
+                            <div class="cascade-content">
+                                <h4>4. Respuesta génica</h4>
+                                <p>Activación de factores de transcripción (NF-κB, AP-1) que modulan la expresión de genes relacionados con proliferación y supervivencia celular.</p>
+                                <span class="cascade-param">NF-κB · AP-1</span>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-card fade-in">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                </div>
+
+                <!-- Parámetros dosimétricos -->
+                <div class="dosimetry-bar fade-in" aria-label="Parámetros dosimétricos relevantes">
+                    <h3 class="dosimetry-title">Parámetros dosimétricos relevantes</h3>
+                    <div class="dosimetry-grid">
+                        <div class="dosimetry-item">
+                            <span class="dosimetry-label">Irradiancia</span>
+                            <span class="dosimetry-value">10–100 mW/cm²</span>
                         </div>
-                        <p class="quote">"The onboarding was seamless, and the smart workflows are incredibly intuitive. We've seen a 40% increase in our deployment speed since switching."</p>
-                        <div class="user-info">
-                            <img src="https://i.pravatar.cc/150?img=33" alt="User" class="avatar">
-                            <div>
-                                <h4>Marcus Chen</h4>
-                                <span>CTO, StartupHub</span>
-                            </div>
+                        <div class="dosimetry-item">
+                            <span class="dosimetry-label">Dosis de energía</span>
+                            <span class="dosimetry-value">1–10 J/cm²</span>
                         </div>
-                    </div>
-                    <div class="testimonial-card fade-in">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <div class="dosimetry-item">
+                            <span class="dosimetry-label">Longitud de onda</span>
+                            <span class="dosimetry-value">630–850 nm</span>
                         </div>
-                        <p class="quote">"Finally, a workspace that actually feels like it was designed for modern teams. The UI is gorgeous, and the AI features are genuinely useful, not just a gimmick."</p>
-                        <div class="user-info">
-                            <img src="https://i.pravatar.cc/150?img=47" alt="User" class="avatar">
-                            <div>
-                                <h4>Elena Rodriguez</h4>
-                                <span>Design Lead, CreativeStudio</span>
-                            </div>
+                        <div class="dosimetry-item">
+                            <span class="dosimetry-label">Modo de emisión</span>
+                            <span class="dosimetry-value">CW / pulsado</span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="pricing">
+        <!-- ============================================================
+             D. EXPLORADOR INTERACTIVO
+             #explorador
+             La lógica está en script.js → initExplorer()
+        ============================================================ -->
+        <section id="explorador" class="explorer-section" aria-labelledby="explorer-heading">
             <div class="container">
+
                 <div class="section-header fade-in">
-                    <h2>Simple, transparent <span class="gradient-text">pricing</span></h2>
-                    <p>No hidden fees. No surprises. Pick the plan that fits your team.</p>
-                    
-                    <!-- Billing Toggle -->
-                    <div class="billing-toggle fade-in">
-                        <span class="toggle-label active" id="monthlyLabel">Monthly</span>
-                        <label class="switch">
-                            <input type="checkbox" id="billingSwitch">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="toggle-label" id="yearlyLabel">Yearly <span class="save-badge">Save 20%</span></span>
-                    </div>
+                    <span class="section-tag">Visualización conceptual</span>
+                    <h2 id="explorer-heading">
+                        Explorador <span class="accent-text">interactivo</span>
+                    </h2>
+                    <p>Módulo educativo de visualización conceptual. Modifica los parámetros para observar cómo cambia el comportamiento estimado de la luz en el tejido.</p>
                 </div>
 
-                <div class="pricing-grid">
-                    <!-- Starter Plan -->
-                    <div class="pricing-card fade-in">
-                        <h3 class="plan-name">Starter</h3>
-                        <p class="plan-desc">Perfect for individuals and small side projects.</p>
-                        <div class="plan-price">
-                            <span class="currency">$</span>
-                            <span class="price-amount" data-monthly="0" data-yearly="0">0</span>
-                            <span class="period">/ month</span>
+                <!-- Aviso de naturaleza educativa -->
+                <div class="explorer-disclaimer fade-in" role="note">
+                    <i class="fas fa-circle-info" aria-hidden="true"></i>
+                    <p>Esta es una <strong>visualización conceptual simplificada</strong>, no una simulación Monte Carlo validada ni una herramienta de diagnóstico clínico. Los resultados son ilustrativos y tienen finalidad exclusivamente educativa.</p>
+                </div>
+
+                <div class="explorer-layout fade-in">
+
+                    <!-- Panel de controles -->
+                    <aside class="explorer-controls" aria-label="Controles del explorador óptico">
+
+                        <!-- Control: Longitud de onda -->
+                        <div class="control-group" id="ctrl-wavelength">
+                            <label class="control-label" for="wavelength-slider">
+                                Longitud de onda (λ)
+                                <span class="control-value" id="wavelength-display" aria-live="polite">660 nm</span>
+                            </label>
+                            <div class="wavelength-track" aria-hidden="true">
+                                <div class="wavelength-spectrum"></div>
+                            </div>
+                            <input
+                                type="range"
+                                id="wavelength-slider"
+                                class="explorer-slider wavelength-slider"
+                                min="400"
+                                max="1000"
+                                value="660"
+                                step="5"
+                                aria-label="Longitud de onda en nanómetros"
+                                aria-valuemin="400"
+                                aria-valuemax="1000"
+                                aria-valuenow="660"
+                                aria-valuetext="660 nanómetros"
+                            >
+                            <div class="slider-range-labels" aria-hidden="true">
+                                <span>400 nm</span>
+                                <span>700 nm</span>
+                                <span>1000 nm</span>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-secondary btn-block">Get Started Free</a>
-                        <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Up to 3 projects</li>
-                            <li><i class="fas fa-check"></i> Basic AI Copilot (50 credits/mo)</li>
-                            <li><i class="fas fa-check"></i> 5GB storage</li>
-                            <li><i class="fas fa-check"></i> Community support</li>
-                        </ul>
+
+                        <!-- Control: Coeficiente de absorción -->
+                        <div class="control-group" id="ctrl-absorption">
+                            <label class="control-label" for="absorption-slider">
+                                Coef. de absorción (μ<sub>a</sub>)
+                                <span class="control-value" id="absorption-display" aria-live="polite">0.10 mm⁻¹</span>
+                            </label>
+                            <input
+                                type="range"
+                                id="absorption-slider"
+                                class="explorer-slider"
+                                min="1"
+                                max="20"
+                                value="5"
+                                step="1"
+                                aria-label="Coeficiente de absorción en milímetros inversos"
+                                aria-valuemin="0.05"
+                                aria-valuemax="1.0"
+                                aria-valuenow="0.10"
+                            >
+                            <div class="slider-range-labels" aria-hidden="true">
+                                <span>0.05 mm⁻¹</span>
+                                <span>0.50 mm⁻¹</span>
+                                <span>1.0 mm⁻¹</span>
+                            </div>
+                        </div>
+
+                        <!-- Control: Coeficiente de dispersión reducido -->
+                        <div class="control-group" id="ctrl-scattering">
+                            <label class="control-label" for="scattering-slider">
+                                Coef. dispersión reducido (μ′<sub>s</sub>)
+                                <span class="control-value" id="scattering-display" aria-live="polite">1.0 mm⁻¹</span>
+                            </label>
+                            <input
+                                type="range"
+                                id="scattering-slider"
+                                class="explorer-slider"
+                                min="1"
+                                max="10"
+                                value="5"
+                                step="1"
+                                aria-label="Coeficiente de dispersión reducido en milímetros inversos"
+                            >
+                            <div class="slider-range-labels" aria-hidden="true">
+                                <span>0.5 mm⁻¹</span>
+                                <span>1.5 mm⁻¹</span>
+                                <span>3.0 mm⁻¹</span>
+                            </div>
+                        </div>
+
+                        <!-- Selector de tipo de tejido -->
+                        <div class="control-group" id="ctrl-tissue">
+                            <span class="control-label">Tipo de tejido</span>
+                            <div class="tissue-selector" role="radiogroup" aria-label="Seleccionar tipo de tejido">
+                                <button class="tissue-btn active" data-tissue="soft" id="tissue-soft" role="radio" aria-checked="true">
+                                    Tejido blando
+                                </button>
+                                <button class="tissue-btn" data-tissue="skin" id="tissue-skin" role="radio" aria-checked="false">
+                                    Piel
+                                </button>
+                                <button class="tissue-btn" data-tissue="muscle" id="tissue-muscle" role="radio" aria-checked="false">
+                                    Músculo
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Métricas calculadas -->
+                        <div class="explorer-metrics" aria-label="Métricas calculadas" aria-live="polite">
+                            <div class="metric-item">
+                                <span class="metric-label">Profundidad de penetración (δ)</span>
+                                <span class="metric-value" id="metric-depth">3.2 mm</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Camino libre medio efectivo</span>
+                                <span class="metric-value" id="metric-mfp">0.97 mm</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Régimen óptico</span>
+                                <span class="metric-value" id="metric-regime">Difusión</span>
+                            </div>
+                        </div>
+
+                    </aside>
+
+                    <!-- Canvas de visualización -->
+                    <div class="explorer-canvas-wrapper" aria-label="Visualización de propagación de luz en tejido">
+                        <canvas
+                            id="tissue-canvas"
+                            width="480"
+                            height="400"
+                            aria-label="Diagrama conceptual de propagación de luz en tejido biológico"
+                            role="img"
+                        ></canvas>
+                        <div class="canvas-legend" aria-label="Leyenda">
+                            <div class="legend-item">
+                                <span class="legend-dot" style="background:#B9434A"></span>
+                                <span>Haz incidente</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot" style="background:#A9B6C7"></span>
+                                <span>Fotones dispersados</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot" style="background:#2d7a4a"></span>
+                                <span>Zona de fluencia</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Pro Plan (Featured) -->
-                    <div class="pricing-card featured fade-in">
-                        <div class="popular-badge">Most Popular</div>
-                        <h3 class="plan-name">Pro</h3>
-                        <p class="plan-desc">For growing teams that need advanced automation.</p>
-                        <div class="plan-price">
-                            <span class="currency">$</span>
-                            <span class="price-amount" data-monthly="29" data-yearly="23">29</span>
-                            <span class="period">/ month</span>
-                        </div>
-                        <a href="#" class="btn btn-primary btn-block">Start 14-Day Trial</a>
-                        <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Unlimited projects</li>
-                            <li><i class="fas fa-check"></i> Advanced AI Copilot (Unlimited)</li>
-                            <li><i class="fas fa-check"></i> 100GB storage</li>
-                            <li><i class="fas fa-check"></i> Custom smart workflows</li>
-                            <li><i class="fas fa-check"></i> Priority email support</li>
-                        </ul>
-                    </div>
-
-                    <!-- Enterprise Plan -->
-                    <div class="pricing-card fade-in">
-                        <h3 class="plan-name">Enterprise</h3>
-                        <p class="plan-desc">For large organizations with custom security needs.</p>
-                        <div class="plan-price">
-                            <span class="price-amount custom-text">Custom</span>
-                        </div>
-                        <a href="#" class="btn btn-secondary btn-block">Contact Sales</a>
-                        <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> Everything in Pro</li>
-                            <li><i class="fas fa-check"></i> SSO & SAML authentication</li>
-                            <li><i class="fas fa-check"></i> Unlimited storage</li>
-                            <li><i class="fas fa-check"></i> Dedicated account manager</li>
-                            <li><i class="fas fa-check"></i> Custom SLA & 24/7 support</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- ============================================================
+             E. PRESENTACIÓN DEL PROYECTO
+             #proyecto
+        ============================================================ -->
+        <section id="proyecto" class="project-section" aria-labelledby="project-heading">
+            <div class="container">
+
+                <div class="project-layout">
+
+                    <div class="project-text fade-in">
+                        <span class="section-tag">Contexto académico</span>
+                        <h2 id="project-heading">
+                            El <span class="accent-text">proyecto</span>
+                        </h2>
+                        <p>LUMEN BIOPHOTONICS es un proyecto académico desarrollado en el marco de la asignatura de <strong>Programación 2</strong>, con enfoque en ingeniería biomédica aplicada a la óptica tisular y la fotobiomodulación.</p>
+                        <p>El objetivo es construir una plataforma educativa que integre contenido científico riguroso con herramientas de visualización interactiva, accesibles para estudiantes de ciencias biomédicas y público especializado.</p>
+                        <p>El proyecto abarca tres etapas: fundamentación teórica, modelado conceptual interactivo y evaluación de la comunicación científica digital.</p>
+
+                        <div class="project-tags" aria-label="Áreas temáticas del proyecto">
+                            <span class="proj-tag">Óptica tisular</span>
+                            <span class="proj-tag">Fotobiomodulación</span>
+                            <span class="proj-tag">Ingeniería biomédica</span>
+                            <span class="proj-tag">HTML5 · CSS3 · JS</span>
+                        </div>
+
+                        <a href="#equipo" class="btn btn-primary" id="project-cta">
+                            Conocer el equipo <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="project-visual fade-in" aria-hidden="true">
+                        <div class="project-card-stack">
+                            <div class="p-card p-card-back">
+                                <div class="p-card-line"></div>
+                                <div class="p-card-line short"></div>
+                                <div class="p-card-dot" style="--dot-c:#A9B6C7"></div>
+                            </div>
+                            <div class="p-card p-card-mid">
+                                <div class="p-card-line"></div>
+                                <div class="p-card-line short"></div>
+                                <div class="p-card-dot" style="--dot-c:#4a90a4"></div>
+                            </div>
+                            <div class="p-card p-card-front">
+                                <div class="p-card-header">
+                                    <i class="fas fa-circle-dot" style="color:#B9434A"></i>
+                                    <span>LUMEN BIOPHOTONICS</span>
+                                </div>
+                                <div class="p-card-line"></div>
+                                <div class="p-card-line short"></div>
+                                <div class="p-card-line shorter"></div>
+                                <div class="p-card-bar">
+                                    <div class="p-card-bar-fill" style="width:68%; background:#B9434A"></div>
+                                </div>
+                                <div class="p-card-bar">
+                                    <div class="p-card-bar-fill" style="width:45%; background:#A9B6C7"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             F. EQUIPO DE TRABAJO
+             #equipo
+             NOTA: Las fotografías reales deben ser proporcionadas por el equipo.
+             Mientras tanto, se reservan los espacios con placeholder accesible.
+        ============================================================ -->
+        <section id="equipo" class="team-section" aria-labelledby="team-heading">
+            <div class="container">
+
+                <div class="section-header fade-in">
+                    <span class="section-tag">Integrantes</span>
+                    <h2 id="team-heading">
+                        Equipo de <span class="accent-text">trabajo</span>
+                    </h2>
+                    <p>Proyecto colaborativo desarrollado por estudiantes de ingeniería biomédica.</p>
+                </div>
+
+                <div class="team-grid" role="list">
+
+                    <!-- Integrante 1 — Completar con datos reales -->
+                    <article class="team-card fade-in" role="listitem" id="team-member-1">
+                        <div class="team-avatar-wrap">
+                            <!--
+                                INSTRUCCIÓN PARA EL EQUIPO:
+                                Reemplazar el src con la ruta real de la fotografía.
+                                Ejemplo: src="assets/foto-nombre.jpg"
+                                El alt debe describir a la persona, no decir "foto de perfil" genérico.
+                            -->
+                            <div class="team-avatar-placeholder" aria-label="Fotografía por proporcionar">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Nombre Apellido</h3>
+                            <span class="team-role">Estructura HTML y accesibilidad</span>
+                            <p class="team-bio">Estudiante de Ingeniería Biomédica. Responsable de la arquitectura semántica y la lógica de interactividad del proyecto.</p>
+                            <div class="team-academic">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span>Programación 2 · [Institución]</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Integrante 2 — Completar con datos reales -->
+                    <article class="team-card fade-in" role="listitem" id="team-member-2">
+                        <div class="team-avatar-wrap">
+                            <div class="team-avatar-placeholder" aria-label="Fotografía por proporcionar">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Nombre Apellido</h3>
+                            <span class="team-role">Diseño visual y maquetación CSS</span>
+                            <p class="team-bio">Estudiante de Ingeniería Biomédica. Responsable de la identidad visual, la paleta de colores y la hoja de estilos del proyecto.</p>
+                            <div class="team-academic">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span>Programación 2 · [Institución]</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Integrante 3 — Completar con datos reales -->
+                    <article class="team-card fade-in" role="listitem" id="team-member-3">
+                        <div class="team-avatar-wrap">
+                            <div class="team-avatar-placeholder" aria-label="Fotografía por proporcionar">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Nombre Apellido</h3>
+                            <span class="team-role">Contenido científico y referencias</span>
+                            <p class="team-bio">Estudiante de Ingeniería Biomédica. Responsable de la investigación bibliográfica, el rigor científico del contenido y las referencias.</p>
+                            <div class="team-academic">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span>Programación 2 · [Institución]</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             G. REFERENCIAS Y CRÉDITOS
+             #referencias
+        ============================================================ -->
+        <section id="referencias" class="references-section" aria-labelledby="references-heading">
+            <div class="container">
+
+                <div class="section-header fade-in">
+                    <span class="section-tag">Bibliografía</span>
+                    <h2 id="references-heading">Referencias y créditos</h2>
+                </div>
+
+                <div class="references-layout fade-in">
+
+                    <div class="references-col">
+                        <h3 class="ref-group-title">Referencias bibliográficas principales</h3>
+                        <ol class="ref-list" aria-label="Lista de referencias">
+                            <li>
+                                <span class="ref-authors">Tuchin, V. V.</span>
+                                <span class="ref-title">Tissue Optics: Light Scattering Methods and Instruments for Medical Diagnostics.</span>
+                                <span class="ref-source">SPIE Press, 3rd ed., 2015.</span>
+                            </li>
+                            <li>
+                                <span class="ref-authors">Hamblin, M. R., &amp; Demidova, T. N.</span>
+                                <span class="ref-title">Mechanisms of low level light therapy.</span>
+                                <span class="ref-source">Proc. SPIE 6140, 2006. <a href="https://doi.org/10.1117/12.646294" target="_blank" rel="noopener noreferrer" aria-label="DOI de Hamblin 2006 (abre en nueva pestaña)">DOI: 10.1117/12.646294</a></span>
+                            </li>
+                            <li>
+                                <span class="ref-authors">Karu, T. I.</span>
+                                <span class="ref-title">Mitochondrial signaling in mammalian cells activated by red and near-IR radiation.</span>
+                                <span class="ref-source">Photochem. Photobiol., 84(5), 1091–1099, 2008.</span>
+                            </li>
+                            <li>
+                                <span class="ref-authors">Wang, L. V., &amp; Wu, H.</span>
+                                <span class="ref-title">Biomedical Optics: Principles and Imaging.</span>
+                                <span class="ref-source">Wiley-Interscience, 2007.</span>
+                            </li>
+                            <li>
+                                <span class="ref-authors">Avci, P. et al.</span>
+                                <span class="ref-title">Low-level laser (light) therapy (LLLT) in skin: stimulating, healing, restoring.</span>
+                                <span class="ref-source">Seminars in Cutaneous Medicine and Surgery, 32(1), 41–52, 2013.</span>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="references-col">
+                        <h3 class="ref-group-title">Créditos y atribuciones</h3>
+                        <ul class="credits-list" aria-label="Créditos de recursos utilizados">
+                            <li>
+                                <strong>Plantilla base:</strong> FlowState Landing Page —
+                                <a href="https://github.com/AmiARMiess" target="_blank" rel="noopener noreferrer">DragonARMY</a>.
+                                Licencia original conservada.
+                            </li>
+                            <li>
+                                <strong>Tipografías:</strong> Space Grotesk, Inter, JetBrains Mono —
+                                <a href="https://fonts.google.com" target="_blank" rel="noopener noreferrer">Google Fonts</a> (OFL 1.1).
+                            </li>
+                            <li>
+                                <strong>Íconos:</strong> Font Awesome 6.4 —
+                                <a href="https://fontawesome.com" target="_blank" rel="noopener noreferrer">fontawesome.com</a> (CC BY 4.0).
+                            </li>
+                            <li>
+                                <strong>Imágenes del equipo:</strong> Por proporcionar por los integrantes.
+                            </li>
+                            <li>
+                                <strong>Visualizaciones SVG y Canvas:</strong> Elaboración propia con finalidad educativa.
+                            </li>
+                        </ul>
+
+                        <h3 class="ref-group-title" style="margin-top:32px;">Aviso académico</h3>
+                        <p class="ref-note">Este proyecto tiene finalidad educativa. El contenido científico está basado en literatura revisada por pares. Las visualizaciones interactivas son modelos conceptuales simplificados y no constituyen herramientas de diagnóstico ni de prescripción clínica.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 FlowState Inc. All rights reserved. Built with <i class="fas fa-heart" style="color: #EC4899;"></i> by <a href="https://github.com/AmiARMiess" target="_blank">DragonARMY</a></p>
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer" id="footer" role="contentinfo">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">
+                    <i class="fas fa-circle-dot" aria-hidden="true"></i>
+                    LUMEN BIOPHOTONICS
+                </span>
+                <p class="footer-tagline">Plataforma educativa de óptica tisular y fotobiomodulación</p>
+            </div>
+            <address class="footer-credits">
+                <p>&copy; 2024 LUMEN BIOPHOTONICS. Proyecto académico — Programación 2.</p>
+                <p>Plantilla base: <a href="https://github.com/AmiARMiess" target="_blank" rel="noopener noreferrer" aria-label="Repositorio de DragonARMY en GitHub (abre en nueva pestaña)">DragonARMY</a>. Adaptación con fines educativos.</p>
+            </address>
         </div>
     </footer>
 
