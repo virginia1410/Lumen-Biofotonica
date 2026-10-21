@@ -1,20 +1,25 @@
 # 🔬 LUMEN BIOPHOTONICS — Luz, Tejido y Tecnología Biomédica
 
 Es una plataforma educativa interactiva dedicada a la exploración y visualización conceptual de los principios ópticos que rigen la interacción entre la luz y los tejidos biológicos, enfocándose en sus fundamentos dentro de la ingeniería biomédica y la fotobiomodulación (FBM).
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/d6ad9af3-2dc1-444a-bd35-fe1f6d41d76b" />
+
+<img width="1321" height="620" alt="image" src="https://github.com/user-attachments/assets/1513d559-f6c2-4f95-8172-1ed2cd206925" />
 
 
 
 
  1. Sección Hero & Navegación Principal
 Presentación principal con simulación conceptual SVG de dispersión fotónica en tejido estratificado.
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/89bb4d2b-e1e5-4747-b9ba-566943080eca" />
+<img width="1287" height="605" alt="image" src="https://github.com/user-attachments/assets/352de732-37a8-4fc3-a85d-e9f1e1e0dc18" />
+
+
 
 
  
  3. Fundamentos Ópticos & Explorador Interactivo
 Explicación de coeficientes e interfaz interactiva con controles deslizantes para simular la profundidad de penetración ($\delta$) en tiempo real sobre el lienzo canvas.
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ed221ab2-c9b2-4d3d-a9ea-956bc607a549" />
+<img width="1304" height="620" alt="image" src="https://github.com/user-attachments/assets/0f72159d-ad48-4d08-a3b1-064ae375383b" />
+
+
 
 
  ⚡ Características Interactivas
