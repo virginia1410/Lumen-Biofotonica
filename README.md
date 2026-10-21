@@ -19,7 +19,7 @@ Presentación principal con simulación conceptual SVG de dispersión fotónica 
 Explicación de coeficientes e interfaz interactiva con controles deslizantes para simular la profundidad de penetración ($\delta$) en tiempo real sobre el lienzo canvas.
 <img width="1304" height="620" alt="image" src="https://github.com/user-attachments/assets/0f72159d-ad48-4d08-a3b1-064ae375383b" />
 
-
+DEMO: https://virginia1410.github.io/Lumen-Biofotonica/ 
 
 
  ⚡ Características Interactivas
